@@ -22,7 +22,11 @@ Pytorch models are trained using the nvcr.io/nvidia/pytorch:19.03-py3 Docker ima
 
 Run the container from the project folder
 ```
-sudo nvidia-docker run -it --name pdm-pytorch --ipc=host -v "$(pwd)":/home/project -p <jupyter-port>:8888 -p <tensorboard-port>:6006 nvcr.io/nvidia/pytorch:19.03-py3
+sudo nvidia-docker run -it --name pdm-pytorch --ipc=host \ 
+  -v "$(pwd)":/home/project \
+  -p <jupyter-port>:8888 \
+  -p <tensorboard-port>:6006 \
+  nvcr.io/nvidia/pytorch:19.03-py3
 ```
 where `<jupyter-port>` and `<tensorboard-port>` are the port where you want to access to the jupyter notebook and tensorboard respectively.
 
@@ -38,7 +42,6 @@ Then install tensorboard and run it
 pip install tensorboardX
 tensorboard --logdir runs --bind_all
 ```
-
 
 ## References 
 [1] N. Helwig, et al., "Condition monitoring of a complex hydraulic system using multivariate statistics," 2015 IEEE International Instrumentation and Measurement Technology Conference (I2MTC) Proceedings, Pisa, 2015, pp. 210-215.
