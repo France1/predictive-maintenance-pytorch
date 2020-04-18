@@ -3,7 +3,7 @@ Deep Learning applied to condition based monitoring of a complex hudraulic syste
 
 ## Backround
 The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit which are connected via the oil tank [1]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows and temperatures while the condition of four hydraulic components (cooler, valve, pump and accumulator) is quantitatively varied. 
-<img src="images/" alt="drawing" width="600"/>
+<img src="images/Schematic" alt="drawing" width="600"/>
 
 ## Data
 The data set addresses the condition assessment of a hydraulic test rig based on multi sensor data. Four fault types are superimposed with several severity grades impeding selective quantification.
