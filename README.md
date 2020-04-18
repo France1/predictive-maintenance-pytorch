@@ -15,6 +15,30 @@ Data samples consist of a sequence of data acquired by different sensors during 
 ```
 {'CP','FS1','PS1','PS2','PS3','PS4','PS5','SE', 'VS1','profile'}
 ```
+where `profile` contains the severity grade classes for each fault type.
+
+## Installation
+Pytorch models are trained using the nvcr.io/nvidia/pytorch:19.03-py3 Docker image from the [NVIDIA repository](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch)
+
+Run the container from the project folder
+```
+sudo nvidia-docker run -it --name pdm-pytorch --ipc=host -v "$(pwd)":/home/project -p <jupyter-port>:8888 -p <tensorboard-port>:6006 nvcr.io/nvidia/pytorch:19.03-py3
+```
+where `<jupyter-port>` and `<tensorboard-port>` are the port where you want to access to the jupyter notebook and tensorboard respectively.
+
+Access the container shell and start jupyterlab
+```
+docker exec -it pdm-pytorch /bin/bash
+pip install jupyterlab
+jupyter-lab --ip 0.0.0.0 --no-browser --allow-root
+```
+
+Then install tensorboard and run it
+```
+pip install tensorboardX
+tensorboard --logdir runs --bind_all
+```
+
 
 ## References 
 [1] N. Helwig, et al., "Condition monitoring of a complex hydraulic system using multivariate statistics," 2015 IEEE International Instrumentation and Measurement Technology Conference (I2MTC) Proceedings, Pisa, 2015, pp. 210-215.
