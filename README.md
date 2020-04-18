@@ -1,5 +1,5 @@
 # predictive-maintenance-pytorch
-Deep Learning applied to condition based monitoring of a complex hudraulic system
+Deep Learning applied to condition based monitoring of a complex hydraulic system
 
 ## Backround
 The data set was experimentally obtained with a hydraulic test rig. This test rig consists of a primary working and a secondary cooling-filtration circuit which are connected via the oil tank [1]. The system cyclically repeats constant load cycles (duration 60 seconds) and measures process values such as pressures, volume flows and temperatures while the condition of four hydraulic components (cooler, valve, pump and accumulator) is quantitatively varied. 
@@ -54,7 +54,9 @@ tensorboard --logdir runs --bind_all
 
 ## References 
 [1] N. Helwig, et al., "Condition monitoring of a complex hydraulic system using multivariate statistics," 2015 IEEE International Instrumentation and Measurement Technology Conference (I2MTC) Proceedings, Pisa, 2015, pp. 210-215.
+
 [2] Ye Yuan, et al., A general end-to-end diagnosis framework for manufacturing systems, National Science Review, Volume 7, Issue 2, February 2020, Pages 418–429, https://doi.org/10.1093/nsr/nwz190 
+
 [3] M.Luong et al, Effective Approaches to Attention-based Neural Machine Translation, 2015, arXiv:1508.04025
 
 
