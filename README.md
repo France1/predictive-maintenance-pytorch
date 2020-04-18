@@ -35,7 +35,7 @@ sudo nvidia-docker run -it --name pdm-pytorch --ipc=host \
   -p <tensorboard-port>:6006 \
   nvcr.io/nvidia/pytorch:19.03-py3
 ```
-where `<jupyter-port>` and `<tensorboard-port>` are the port where you want to access to the jupyter notebook and tensorboard respectively.
+where `<jupyter-port>` and `<tensorboard-port>` are the ports where you access jupyter and tensorboard server respectively.
 
 Access the container shell, install and run jupyterlab
 ```
