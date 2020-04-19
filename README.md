@@ -52,6 +52,7 @@ tensorboard --logdir runs --bind_all
 
 ## Training
 Models were training using 4 NVIDIA GPUs and CUDA parallel computing for 500 epochs with 4 as batch size
+
 ### 1D CNN
 The model was trained using a sequence length of 6000 and learning rate 1e-4
 ```
@@ -60,6 +61,7 @@ CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py -g -e 500 -l 1e-4
 <p align="center">
   <img width="650" src="images/CNN.png">
 </p>
+
 ### LSTM with attention
 The model was trained using a sequence length of 50 and learning rate 1e-3
 ```
