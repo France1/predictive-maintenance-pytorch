@@ -71,6 +71,14 @@ CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py -g -e 500 -l 1e-3
   <img width="650" src="images/LSTMattn.png">
 </p>
 
+## Evaluation
+
+|               |               Train set               |                 Test set              |
+|               | fault_1 | fault_2 | fault_3 | fault_4 | fault_1 | fault_2 | fault_3 | fault_4 | 
+| ------------- |:-------------------------------------:|:-------------------------------------:|
+|    CNN 1D     |    1.0  |    1.0  |   0.99  | 0.98    |    1.0  |    1.0  |   0.98  | 0.95    |
+
+
 
 ## References 
 [1] N. Helwig, et al., "Condition monitoring of a complex hydraulic system using multivariate statistics," 2015 IEEE International Instrumentation and Measurement Technology Conference (I2MTC) Proceedings, Pisa, 2015, pp. 210-215.
