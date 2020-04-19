@@ -88,9 +88,9 @@ def get_args():
 
 if __name__ == '__main__':
     
-    data_dir = '/home/ubuntu/Syncthing/pump_dataset'
-    writer_dir = './runs/experiment_7'
-    checkpoint_dir = './checkpoints/experiment_7/'
+    data_dir = '<path-to-dataset>'
+    writer_dir = './runs/experiment_1'
+    checkpoint_dir = './checkpoints/experiment_1/'
     os.makedirs(checkpoint_dir, exist_ok=True)
 
     channels = ['CP', 'FS1', 'PS1', 'PS2', 'PS3', 'PS4', 'PS5', 'SE', 'VS1']
