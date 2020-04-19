@@ -58,7 +58,7 @@ The model was trained using a sequence length of 6000 and learning rate 1e-4
 CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py -g -e 500 -l 1e-4
 ```
 <p align="center">
-  <img width="460" src="images/Schematic.png">
+  <img width="460" src="images/CNN.png">
 </p>
 
 
