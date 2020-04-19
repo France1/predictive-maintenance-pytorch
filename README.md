@@ -8,21 +8,21 @@ The data set was experimentally obtained with a hydraulic test rig. This test ri
 </p>
 
 ## Dataset
-The data set is the [Condition monitoring of hydraulic systems Data Set](http://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems) contained in UCI Machine Learning Repository. It addresses the condition assessment of a hydraulic test rig based on multi sensor data shown in the schematic above. Four fault types are superimposed with several severity grades impeding selective quantification.
+The data set is the [Condition monitoring of hydraulic systems Data Set](http://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems) contained in UCI Machine Learning Repository. It addresses the condition assessment of a hydraulic test rig (shown above) based on multi sensor data. Four fault types are superimposed with several severity grades impeding selective quantification.
 
 ## Data Preparation
-Data samples consist of a sequence of data acquired by different sensors during several cycles with duration of 60 seconds. Different sensors have different sampling rates of 1, 10, and 100 Hz which translate into sequence lenghts of respectively 60, 600, and 6000 samples. All the sequences are interpolated to a single sampling rate in `prepare_data.py` to feed different sensors to the same model. Downsampling is taken into account as it needed in LSTM models which starts to perform poorly for long sequences. From the original data set, sensor whose correlation is above 95% are eliminated as shown in this [notebook](https://github.com/France1/predictive-maintenance-pytorch/blob/master/notebooks/Data_preparation.ipynb). This reduced the sensors to a significant set 
+Data samples consist of sequences of measurements acquired by 17 different sensors during testing cycles with durationof 60 seconds. Different sensor types can hace different sampling rates, specifically 1, 10, and 100 Hz which correspond to sequence lenghts of respectively 60, 600, and 6000 samples. All the sequences are interpolated into a unique sampling rate in `prepare_data.py` to allow feeding all data into the same model. Downsampling is also taken into account as this is needed in LSTM which is known to perform poorly for long sequences. From the original data set, sensors whose correlation is above 95% are eliminated as shown in the [notebook](https://github.com/France1/predictive-maintenance-pytorch/blob/master/notebooks/Data_preparation.ipynb). This step reduced the number of sensors to the final set 
 ```
 {'CP','FS1','PS1','PS2','PS3','PS4','PS5','SE', 'VS1','profile'}
 ```
 where `profile` contains the severity grade classes for each fault type.
 
 ## Multi-task Condition Based Classification
-The problem is approached as a multi-task classification where each task is represented by the type of fault which contain the severity grade to classify through a multi-task loss function. Two different backbones are used to extract the features
+The problem is approached as a multi-task classification in which each task is represented by the type of fault to be monitored.  Each fault contains different severity grades representing the classes to predict. Instead of training different models for different fault types, a unique model is trained end-to-end by defining a multi-task [loss function]9https://discuss.pytorch.org/t/how-to-do-multi-task-training/14879/7). Two different backbones are used to extract the features
 ### 1D CNN
-The 1D CNN architecture is taken from [2], which consists of two convolutional and max pool layers. Batch normalization has been added to facilitate training
+The 1D CNN architecture is taken from [2], which consists of two convolutional and max pool layers. Batch normalization has also been added to facilitate training
 ### LSTM with attention
-For comparison an LSTM architecture has been investigated. A vanilla LSTM architecture was able to achive good accuracy in a single-task problem, but failed to classify the 2nd failure mode in multi-task mode under all the hyperparameter combinations. Good performances where achived only after adding the attention mechanism in [3], with pytorch implementation inspired from this [project](https://github.com/prakashpandey9/Text-Classification-Pytorch)
+For comparison, an LSTM architecture has been investigated. A vanilla LSTM architecture was able to achive good accuracy in a single-task problem, but failed to correclty classify the 2nd failure mode in multi-task mode under all the hyperparameter combinations. Good performances where achived only after adding the attention mechanism described in [3], with pytorch implementation inspired from this [project](https://github.com/prakashpandey9/Text-Classification-Pytorch)
 
 ## Installation
 Pytorch models are trained using the `nvcr.io/nvidia/pytorch:19.03-py3` Docker image from the [NVIDIA repository](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch)
@@ -35,7 +35,7 @@ sudo nvidia-docker run -it --name pdm-pytorch --ipc=host \
   -p <tensorboard-port>:6006 \
   nvcr.io/nvidia/pytorch:19.03-py3
 ```
-where `<jupyter-port>` and `<tensorboard-port>` are the ports where you access jupyter and tensorboard server respectively.
+where `<jupyter-port>` and `<tensorboard-port>` are the ports where you access jupyter and tensorboard servers respectively.
 
 Access the container shell, install and run jupyterlab
 ```
@@ -44,7 +44,7 @@ pip install jupyterlab
 jupyter-lab --ip 0.0.0.0 --no-browser --allow-root
 ```
 
-Innstall and run tensorboard
+Install and run tensorboard
 ```
 pip install tensorboardX
 tensorboard --logdir runs --bind_all
@@ -73,9 +73,9 @@ CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py -g -e 500 -l 1e-3
 
 ## Results
 
-CNN 1D shows the best performances and is the easiest to train. LSTM has comparable performances only if an attention mechanism is added, still the current configuration shows some overfitting
+CNN 1D shows the best performances and is the easiest to train. LSTM has comparable performances only if an attention mechanism is added, still the current configuration exhibits some overfitting
 
-|                | Train set               | Test set                |
+|                | Train set (90%)         | Test set (10%)          |
 |--------------- |:-----------------------:|:-----------------------:|
 | CNN 1D         | (1.0, 1.0, 0.99, 0.98)  | (1.0, 1.0, 0.98, 0.95)  |
 | LSTM+attention | (1.0, 1.0, 0.98, 0.97)  | (1.0, 0.97, 0.95, 0.88) |
