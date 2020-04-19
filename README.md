@@ -25,9 +25,7 @@ The 1D CNN architecture is taken from [2], which consists of two convolutional a
 For comparison, an LSTM architecture has been investigated. A vanilla LSTM architecture was able to achive good accuracy in a single-task problem, but failed to correclty classify the 2nd failure mode in multi-task mode under all the hyperparameter combinations. Good performances where achived only after adding the attention mechanism described in [3], with pytorch implementation inspired from this [project](https://github.com/prakashpandey9/Text-Classification-Pytorch)
 
 ## Installation
-Pytorch models are trained using the `nvcr.io/nvidia/pytorch:19.03-py3` Docker image from the [NVIDIA repository](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch)
-
-Run the container from the project folder
+Run the PyTorch Docker container from project folder
 ```
 sudo nvidia-docker run -it --name pdm-pytorch --ipc=host \ 
   -v "$(pwd)":/home/project \
@@ -51,22 +49,16 @@ tensorboard --logdir runs --bind_all
 ```
 
 ## Training
-Models were trained using 4 NVIDIA GPUs and CUDA parallel computing for 500 epochs on 90% of the data set with batch size of 4
+Models were trained for 500 epochs on 90% of the data set with batch size of 4
 
 ### 1D CNN
 The model was trained using a sequence length of 6000 and learning rate 1e-4
-```
-CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py -g -e 500 -l 1e-4
-```
 <p align="center">
   <img width="650" src="images/CNN.png">
 </p>
 
 ### LSTM with attention
 The model was trained using a sequence length of 50 and learning rate 1e-3
-```
-CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py -g -e 500 -l 1e-3
-```
 <p align="center">
   <img width="650" src="images/LSTMattn.png">
 </p>
