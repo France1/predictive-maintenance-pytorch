@@ -71,7 +71,9 @@ CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py -g -e 500 -l 1e-3
   <img width="650" src="images/LSTMattn.png">
 </p>
 
-## Evaluation
+## Results
+
+CNN 1D shows the best performances and is the easiest to train. LSTM has comparable performances only if an attention mechanism is added, still the current configuration shows some overfitting
 
 |                | Train set               | Test set                |
 |--------------- |:-----------------------:|:-----------------------:|
