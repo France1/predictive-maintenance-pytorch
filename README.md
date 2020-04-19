@@ -50,6 +50,10 @@ pip install tensorboardX
 tensorboard --logdir runs --bind_all
 ```
 
+## Model training
+```
+CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py --gpu
+```
 
 
 ## References 
