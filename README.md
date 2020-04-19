@@ -18,7 +18,7 @@ Data samples consist of sequences of measurements acquired by 17 different senso
 where `profile` contains the severity grade classes for each fault type.
 
 ## Multi-task Condition Based Classification
-The problem is approached as a multi-task classification in which each task is represented by the type of fault to be monitored.  Each fault contains different severity grades representing the classes to predict. Instead of training different models for different fault types, a unique model is trained end-to-end by defining a multi-task [loss function]9https://discuss.pytorch.org/t/how-to-do-multi-task-training/14879/7). Two different backbones are used to extract the features
+The problem is approached as a multi-task classification in which each task is represented by the type of fault to be monitored.  Each fault contains different severity grades representing the classes to predict. Instead of training different models for different fault types, a unique model is trained end-to-end by defining a multi-task [loss function](https://discuss.pytorch.org/t/how-to-do-multi-task-training/14879/7). Two different backbones are used to extract the features
 ### 1D CNN
 The 1D CNN architecture is taken from [2], which consists of two convolutional and max pool layers. Batch normalization has also been added to facilitate training
 ### LSTM with attention
