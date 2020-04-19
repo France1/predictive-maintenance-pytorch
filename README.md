@@ -73,7 +73,7 @@ CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py -g -e 500 -l 1e-3
 
 ## Evaluation
 
-|               |               Train set               |                 Test set              |
+|               |               Train set              ||                 Test set             ||
 |               | fault_1 | fault_2 | fault_3 | fault_4 | fault_1 | fault_2 | fault_3 | fault_4 | 
 | ------------- |:-------------------------------------:|:-------------------------------------:|
 |    CNN 1D     |    1.0  |    1.0  |   0.99  | 0.98    |    1.0  |    1.0  |   0.98  | 0.95    |
