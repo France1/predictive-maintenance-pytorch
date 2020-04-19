@@ -73,32 +73,11 @@ CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py -g -e 500 -l 1e-3
 
 ## Evaluation
 
-|               |               Train set              ||                 Test set             ||
-|               | fault_1 | fault_2 | fault_3 | fault_4 | fault_1 | fault_2 | fault_3 | fault_4 | 
-|===============|---------------------------------------|---------------------------------------|
-|    CNN 1D     |    1.0  |    1.0  |   0.99  | 0.98    |    1.0  |    1.0  |   0.98  | 0.95    |
-
-
-## test table
-
-|              | Header 1        | Header 2                       || Header 3                       ||
-|              | Subheader 1     | Subheader 2.1  | Subheader 2.2  | Subheader 3.1  | Subheader 3.2  |
-|==============|-----------------|----------------|----------------|----------------|----------------|
-| Row Header 1 | 3row, 3col span                                 ||| Colspan only                   ||
-| Row Header 2 |       ^                                         ||| Rowspan only   | Cell           |
-| Row Header 3 |       ^                                         |||       ^        | Cell           |
-| Row Header 4 |  Row            |  Each cell     |:   Centered   :| Right-aligned :|: Left-aligned  |
-:              :  with multiple  :  has room for  :   multi-line   :    multi-line  :  multi-line    :
-:              :  lines.         :  more text.    :      text.     :         text.  :  text.         :
-|--------------|-----------------|----------------|----------------|----------------|----------------|
-
-
-
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+|                | Train set              | Test set                |
+|--------------- |:----------------------:|:-----------------------:|
+| CNN 1D         | (1.0, 1.0, 0.99, 0.98) | (1.0, 1.0, 0.98, 0.95)  |
+| LSTM+attention | (1.0, 1.0, 0.98, 0.97) | (1.0, 0.97, 0.95, 0.88) |
+| LSTM           |                        |                         |
 
 
 
