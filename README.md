@@ -51,7 +51,7 @@ tensorboard --logdir runs --bind_all
 ```
 
 ## Training
-Models were training using 4 NVIDIA GPUs and CUDA parallel computing for 500 epochs with 4 as batch size
+Models were trained using 4 NVIDIA GPUs and CUDA parallel computing for 500 epochs on 90% of the data set with batch size of 4
 
 ### 1D CNN
 The model was trained using a sequence length of 6000 and learning rate 1e-4
@@ -73,11 +73,11 @@ CUDA_VISIBLE_DEVICES=1,2,3,4 python train.py -g -e 500 -l 1e-3
 
 ## Evaluation
 
-|                | Train set              | Test set                |
-|--------------- |:----------------------:|:-----------------------:|
-| CNN 1D         | (1.0, 1.0, 0.99, 0.98) | (1.0, 1.0, 0.98, 0.95)  |
-| LSTM+attention | (1.0, 1.0, 0.98, 0.97) | (1.0, 0.97, 0.95, 0.88) |
-| LSTM           |                        |                         |
+|                | Train set               | Test set                |
+|--------------- |:-----------------------:|:-----------------------:|
+| CNN 1D         | (1.0, 1.0, 0.99, 0.98)  | (1.0, 1.0, 0.98, 0.95)  |
+| LSTM+attention | (1.0, 1.0, 0.98, 0.97)  | (1.0, 0.97, 0.95, 0.88) |
+| LSTM           | (1.0, 0.76, 0.98, 0.85) | (1.0, 0.75, 0.95, 0.85) |                     
 
 
 
