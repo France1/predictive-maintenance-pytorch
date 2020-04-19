@@ -65,9 +65,9 @@ The model was trained using a sequence length of 50 and learning rate 1e-3
 
 ## Results
 
-CNN 1D shows the best performances and is the easiest to train. LSTM has comparable performances only if an attention mechanism is added, still the current configuration exhibits some overfitting
+CNN 1D shows the best performances and is the easiest to train. LSTM has comparable performances only if an attention mechanism is added, still the current configuration exhibits some overfitting. The table below shows the accuracy of classification for each fault type
 
-|                | Train set (90%)         | Test set (10%)          |
+|                | Train set               | Test set                |
 |--------------- |:-----------------------:|:-----------------------:|
 | CNN 1D         | (1.0, 1.0, 0.99, 0.98)  | (1.0, 1.0, 0.98, 0.95)  |
 | LSTM+attention | (1.0, 1.0, 0.98, 0.97)  | (1.0, 0.97, 0.95, 0.88) |
